@@ -1,0 +1,1 @@
+Hi< I am checking if the static folder is accessible or not !

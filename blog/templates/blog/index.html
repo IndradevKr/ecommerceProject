@@ -1,0 +1,59 @@
+{% extends 'blog/basic.html' %}
+{% block title %} Blog {% endblock %}
+{% block body %}
+{% load static %}
+
+
+<div class="row jumbotron p-4 p-md-5 text-white rounded bg-dark">
+  <div class="col-md-6 px-0">
+    <h1 class="display-4 font-italic">Welcome to blog page of HamroBajar ! </h1>
+    <p class="lead my-3">We update our customers with our latest plans and announcement here.</p>
+    <p class="lead mb-0"><a href="/shop/about" class="text-white font-weight-bold">About Us...</a></p>
+  </div>
+  <div class="row align-items-center mx-2">
+    <div class="col-12 col-md-7 col-lg-6 order-md-2">
+
+      <!-- Image -->
+      <img src="/media/shop/images/blog.png" class="img-fluid mw-md-150 mw-lg-130 mb-6 mb-md-0 aos-init aos-animate"
+        alt="..." data-aos="fade-up" data-aos-delay="100">
+
+    </div>
+    <div class="col-12 col-md-7 col-lg-6 order-md-1 aos-init aos-animate" data-aos="fade-up">
+    </div>
+  </div>
+
+</div>
+<div class="container">
+  <div class="row mb-2">
+    {% for item in myposts %}
+
+    <div class="col-md-6">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-primary">{{item.head0}}</strong>
+          <h5 class="mb-0">{{item.title}}</h5>
+          <div class="mb-1 text-muted">{{item.pub_date}}</div>
+          <p class="card-text mb-auto">{{item.content0|slice:"0:100"}}....</p>
+          <a href="blogpost/{{item.post_id}}" class="stretched-link">Continue reading</a>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+          <img src="/media/{{item.thumbnail}}" class="bd-placeholder-img" width="200" height="250"
+            preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
+          <title>Placeholder</title>
+
+          </img>
+        </div>
+      </div>
+      {% if forloop.counter|divisibleby:2 %}
+    </div>
+    <div class="row mb-2">
+
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+</div>
+</div>
+
+
+{% endblock %}
